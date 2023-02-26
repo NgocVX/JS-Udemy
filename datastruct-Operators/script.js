@@ -33,11 +33,16 @@ const restaurant = {
 
   orderDelivery: function({starterIndex=0, mainIndex=0, time, address}) {
     console.log(`Order receive!\nThe customer use ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}.\nIt will be delivered to ${address} at ${time}.`);
+  },
+
+  orderPho: function(ing1, ing2, ing3) {
+    console.log(`Here is your delicious Pho with ${ing1}, ${ing2} and ${ing3}.`);
   }
 };
 
 console.log('Hello my name is Ngoc Vo :)) Now we start coding.');
 
+// Destructuring Array
 /**
  * Destructuring Array
  * 
@@ -72,7 +77,9 @@ console.log(k, l, m);
 
 */
 
-// Destructuring Object
+//Destructuring Object
+/**
+ * 
 const {name, mainMenu, openingHours} = restaurant;
 console.log(name, mainMenu, openingHours);
 
@@ -108,3 +115,39 @@ restaurant.orderDelivery({
   time: '18:30',
   address: 'so 48, Mai Xuan Thuong, Quy Nhon'
 });
+ */
+
+// Spread Operator
+const arr1 = [7, 8, 9];
+const newArr = [1, ...arr1, 2];
+console.log(arr1);
+console.log(newArr);
+
+// join 2 array
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu, 'some thing...'];
+console.log(menu);
+
+// Iterables: arrays, string, maps, sets. NOT Object
+const strName = 'NgocVX';
+const letters = [...strName];
+console.log(strName);
+console.log(letters);
+
+// order Pho
+//  const ingredients = [
+//   prompt('Let\'s make Pho. Ingredient 1?'),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+//  ];
+ const ingredients = ['Soi Pho', 'Bo Tai', 'Chanh'];
+ restaurant.orderPho(...ingredients);
+
+ // Objects
+ const restaurantCopy = { foundName: 'Ngoc Vo',foundedIn: 2003, ...restaurant };
+ console.log(restaurantCopy);
+ restaurantCopy.name = 'Ngoc Nha';
+ restaurantCopy.openingHours.fri.open = 8;
+ restaurantCopy.openingHours.fri.close = 21;
+
+ console.log(restaurant);
+ console.log(restaurantCopy);
