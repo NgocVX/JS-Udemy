@@ -37,6 +37,11 @@ const restaurant = {
 
   orderPho: function(ing1, ing2, ing3) {
     console.log(`Here is your delicious Pho with ${ing1}, ${ing2} and ${ing3}.`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredient) {
+    console.log(mainIngredient);
+    console.log(otherIngredient);
   }
 };
 
@@ -118,6 +123,8 @@ restaurant.orderDelivery({
  */
 
 // Spread Operator
+/**
+ * 
 const arr1 = [7, 8, 9];
 const newArr = [1, ...arr1, 2];
 console.log(arr1);
@@ -151,3 +158,34 @@ console.log(letters);
 
  console.log(restaurant);
  console.log(restaurantCopy);
+ */
+
+ // Rest pattern and Parameters
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto);
+console.log(otherFood);
+
+// object
+const {fri, ...otherOpenHours} = restaurant.openingHours;
+console.log(fri);
+console.log(otherOpenHours);
+
+// function
+const add = (...numbers) => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log('Total: ' + sum);
+}
+
+add(2, 5, 7, 9);
+add(99, 12, 7, 1, 123);
+add();
+
+const x = [5, 7, 29];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onions', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
+
